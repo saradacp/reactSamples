@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app = "myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./CSS/styles.css" rel="stylesheet">
+</head>
+
+<body ng-controller="myCtrl">	
+	<div class='container'>	
+    <div> 
+        <div><label> Please choose an option and click the button</label> </div>         
+        <div><input  type="checkbox" ng-model="checkBox.show"> Show list</div>
+        <div><input  type="checkbox" ng-model="checkBox.create"> Create list</div>  
+    </div>
+		<div>			
+			<button popover-placement="bottom" popover-template="list.templateUrl"  ng-click='showAction()'>
+        Click here for the popover
+      </button>
+		</div>
+   </div>
+
+	<script type="text/ng-template" id="list.html">        
+        <div class="form-group">
+           
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="new.html">        
+        <div class="form-group">
+          <label>Shopping List </label>          
+          <ul>
+          <li popover-placement="bottom" popover-template="successMsg.templateUrl"  ng-repeat ="list in shoppingList |filter:{listType:'S'}"style='list-style:none'>{{list.listName}}({{list.listCount}})</li>           
+          </ul>
+
+          <label>Pickup List </label>          
+          <ul>
+          <li  popover-placement="bottom" popover-template="successMsg.templateUrl" ng-repeat ="list in shoppingList |filter:{listType:'P'}"style='list-style:none'>{{list.listName}}({{list.listCount}})</li>           
+          </ul>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="createNewList.html">        
+        
+         <div class="form-group">
+           <label >Create new list</label> <br>           
+          <input type="text" ng-model="dynamicPopover.title" class="form-control" placeholder='List Name'><br>
+             <input type="radio" name="list" value="shippingList" checked> Shipping List &nbsp;&nbsp;&nbsp; 
+             <input type="radio" name="list" value=" pickupList"> Pickup List           
+        	<br>
+        	<br>
+          <button class="btn btn-success btn-default" type="button"> Create</button>                  
+        </div>
+
+    </script>
+ 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+ 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js"></script>
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.3.js"></script>
+    <script src="./JS/app.js"></script>
+    
+</body>
+
+</html>
