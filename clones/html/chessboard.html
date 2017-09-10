@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.white-bg {
+  background: white;
+  width:100px;
+  height:100px;
+  border: 1px solid gray;
+}
+.black-bg {
+  background: black;
+  width:100px;
+  height:100px;
+  border: 1px solid gray;
+}
+</style>
+
+<head>
+  <script>
+
+  var renderChessBoard = function() {
+    var table = document.createElement("table");
+    for (var i = 1; i < 9; i++) {
+        var tr = document.createElement('tr');
+        for (var j = 1; j < 9; j++) {
+            var td = document.createElement('td');
+            if (i%2 == j%2) {
+                td.className = "white-bg";
+            } else {
+                td.className = "black-bg";
+            }
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+    document.body.appendChild(table);
+  }
+
+  </script>
+</head>
+<body onload="renderChessBoard()">
+</body>
+</html>
