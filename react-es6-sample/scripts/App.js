@@ -6,8 +6,7 @@ export default class App extends Component {
     this.state= {firstName: ''}
   }
   handleOnChange(event) {
-    console.log("event", event);
-    this.setState({firstName: event.target.value})
+   this.setState({firstName: event.target.value})
   }
   render() {
     return (
